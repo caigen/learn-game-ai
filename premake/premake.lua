@@ -122,7 +122,9 @@ local function CreateSandboxProject( projectName )
 		location( "../build/projects/%{prj.name}" )
 		debugdir( "$(OutDir)" )
 -- increase precompiled header allocation limit
-		buildoptions( { "/Zm256" } )
+		buildoptions( { 
+			"/wd\"4819\"", 
+			"/Zm256" } )
 -- link against all other libraries
 		links( {
 			"bullet_collision",
@@ -155,7 +157,9 @@ local function CreateSandboxProject( projectName )
 		} )
 		configuration( { "windows" } )
 -- add the directx include directory
-			buildoptions( { "/I \"$(DXSDK_DIR)/Include/\"" } )
+			buildoptions( { 
+				"/wd\"4819\"", 
+				"/I \"$(DXSDK_DIR)/Include/\"" } )
 -- link against directx libraries
 			links( {
 				"d3d9",
@@ -219,7 +223,9 @@ end
 		location( "../build/projects/demo_framework" )
 		pchheader( "PrecompiledHeaders.h" )
 		pchsource( "../src/demo_framework/src/PrecompiledHeaders.cpp" )
-		buildoptions( { "/Zm256" } )
+		buildoptions( { 
+			"/wd\"4819\"", 
+			"/Zm256" } )
 		includedirs( {
 			"../src/",
 			"../src/bullet_collision/include/",
@@ -230,7 +236,9 @@ end
 			"../src/ogre3d_direct3d9/include/"
 		} )
 		configuration( { "windows" } )
-			buildoptions( { "/I \"$(DXSDK_DIR)/Include/\"" } )
+			buildoptions( { 
+				"/wd\"4819\"", 
+				"/I \"$(DXSDK_DIR)/Include/\"" } )
 		configuration( { "*" } )
 		files( {
 			"../src/demo_framework/include/**.h",
@@ -251,6 +259,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/bullet_collision" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4127\"", "/wd\"4100\"", "/wd\"4244\"", "/wd\"4702\"",
 			"/wd\"4512\"", "/wd\"4267\""
 		} )
@@ -273,6 +282,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/bullet_dynamics" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4127\"", "/wd\"4100\"", "/wd\"4244\"", "/wd\"4702\"",
 			"/wd\"4512\"", "/wd\"4267\"", "/wd\"4305\""
 		} )
@@ -295,6 +305,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/bullet_linearmath" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4127\"", "/wd\"4245\"", "/wd\"4244\"", "/wd\"4267\"",
 			"/wd\"4701\""
 		} )
@@ -319,6 +330,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/freeimage" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4127\"", "/wd\"4189\"", "/wd\"4244\"",
 			"/wd\"4611\"", "/wd\"4389\"", "/wd\"4324\"", "/wd\"4702\"",
 			"/wd\"4701\"", "/wd\"4789\""
@@ -354,6 +366,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/freetype" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4244\"", "/wd\"4245\"", "/wd\"4701\"",
 			"/wd\"4267\"", "/wd\"4324\"", "/wd\"4306\"", "/wd\"4703\""
 		} )
@@ -422,6 +435,7 @@ end
 		} )
 		buildoptions( {
 			"/I \"$(DXSDK_DIR)/Include/\"",
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4189\"", "/wd\"4244\"", "/wd\"4389\"",
             "/wd\"4702\"", "/wd\"4267\""
 		} )
@@ -439,6 +453,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/libjpeg" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4244\"", "/wd\"4127\"", "/wd\"4267\""
 		} )
 		files( { "../src/libjpeg/include/**.h", "../src/libjpeg/src/**.c" } )
@@ -456,6 +471,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/libopenjpeg" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4244\"", "/wd\"4127\"", "/wd\"4267\"",
 			"/wd\"4701\"", "/wd\"4706\""
 		} )
@@ -469,7 +485,9 @@ end
 	project( "libpng" )
 		kind( "StaticLib" )
 		location( "../build/projects/libpng" )
-		buildoptions( { "/wd\"4127\"" } )
+		buildoptions( { 
+			"/wd\"4819\"", 
+			"/wd\"4127\"" } )
 		includedirs( { "../src/zlib/include/" } )
 		files( { "../src/libpng/include/**.h", "../src/libpng/src/**.c" } )
 		defines( { "WIN32", "_CRT_SECURE_NO_WARNINGS" } )
@@ -479,6 +497,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/libraw" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4244\"", "/wd\"4189\"", "/wd\"4101\"", "/wd\"4706\"",
 			"/wd\"4100\"", "/wd\"4018\"", "/wd\"4305\"", "/wd\"4309\"",
 			"/wd\"4127\"", "/wd\"4389\"", "/wd\"4804\"", "/wd\"4146\"",
@@ -498,6 +517,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/libtiff4" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4127\"", "/wd\"4244\"", "/wd\"4706\"", "/wd\"4702\"",
 			"/wd\"4701\"", "/wd\"4018\"", "/wd\"4306\"", "/wd\"4305\"",
 			"/wd\"4267\"", "/wd\"4324\"", "/wd\"4703\"", "/wd\"4100\""
@@ -515,6 +535,7 @@ end
 		location( "../build/projects/libvorbis" )
 		includedirs( { "../src/libogg/include/" } )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4244\"", "/wd\"4127\"", "/wd\"4706\"", "/wd\"4305\"",
 			"/wd\"4267\""
 		} )
@@ -532,6 +553,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/lua" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4244\"", "/wd\"4702\"", "/wd\"4324\"", "/wd\"4334\""
 		} )
 		files( {
@@ -549,6 +571,7 @@ end
 		pchsource( "../src/ogre3d/src/OgrePrecompiledHeaders.cpp" )
 		buildoptions( {
 			"/bigobj",
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4127\"", "/wd\"4193\"", "/wd\"4244\"",
 			"/wd\"4305\"", "/wd\"4512\"", "/wd\"4706\"", "/wd\"4702\"",
 			"/wd\"4245\"", "/wd\"4503\"", "/wd\"4146\"", "/wd\"4565\"",
@@ -590,6 +613,7 @@ end
 		location( "../build/projects/ogre3d_direct3d9" )
 		includedirs( { "../src/ogre3d/include/" } )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4189\"", "/wd\"4018\"", "/wd\"4193\"",
 			"/wd\"4127\"", "/wd\"4389\"", "/wd\"4512\"", "/wd\"4701\"",
 			"/wd\"4244\"", "/wd\"4702\"", "/wd\"4267\"", "/wd\"4703\"",
@@ -614,6 +638,7 @@ end
 		location( "../build/projects/ogre3d_gorilla" )
 		includedirs( { "../src/" } )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/Zm198"
 		} )
 		configuration( "*" )
@@ -629,6 +654,7 @@ end
 		location( "../build/projects/ogre3d_particlefx" )
 		includedirs( { "../src/ogre3d/include/" } )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4189\"", "/wd\"4018\"", "/wd\"4193\"",
 			"/wd\"4127\"", "/wd\"4389\"", "/wd\"4512\"", "/wd\"4701\"",
 			"/wd\"4244\"", "/wd\"4702\"", "/wd\"4267\"", "/wd\"4703\"",
@@ -655,6 +681,7 @@ end
 		pchsource( "../src/ogre3d_procedural/src/ProceduralPrecompiledHeaders.cpp" )
 		includedirs( { "../src/ogre3d/include/" } )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4100\"", "/wd\"4127\"", "/wd\"4244\"", "/wd\"4701\"",
 			"/wd\"4267\"",
 			"/Zm198"
@@ -670,6 +697,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/ois" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4512\"", "/wd\"4100\"", "/wd\"4189\""
 		} )
 		configuration( "windows" )
@@ -682,6 +710,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/openexr" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4244\"", "/wd\"4305\"", "/wd\"4100\"", "/wd\"4127\"",
 			"/wd\"4245\"", "/wd\"4512\"", "/wd\"4706\"", "/wd\"4267\"",
 			"/wd\"4702\"", "/wd\"4101\"", "/wd\"4800\"", "/wd\"4018\"",
@@ -703,7 +732,9 @@ end
 	project( "opensteer" )
 		kind( "StaticLib" )
 		location( "../build/projects/opensteer" )
-		buildoptions( { "/wd\"4701\"", "/wd\"4244\"", "/wd\"4100\"" } )
+		buildoptions( { 
+			"/wd\"4819\"", 
+			"/wd\"4701\"", "/wd\"4244\"", "/wd\"4100\"" } )
 		files( {
 			"../src/opensteer/include/**.h",
 			"../src/opensteer/src/**.c",
@@ -723,6 +754,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/zlib" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4131\"", "/wd\"4996\"", "/wd\"4244\"", "/wd\"4127\""
 		} )
 		files( { "../src/zlib/include/**.h", "../src/zlib/src/**.c" } )
@@ -733,6 +765,7 @@ end
 		kind( "StaticLib" )
 		location( "../build/projects/zzip" )
 		buildoptions( {
+			"/wd\"4819\"", 
 			"/wd\"4127\"", "/wd\"4996\"", "/wd\"4706\"", "/wd\"4244\"",
 			"/wd\"4267\"", "/wd\"4028\"", "/wd\"4305\""
 		} )
